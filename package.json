@@ -1,0 +1,22 @@
+{
+  "name": "thomasranque_7_11022022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./scripts/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peanuts-83/ThomasRanque_7_11022022.git"
+  },
+  "author": "tom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peanuts-83/ThomasRanque_7_11022022/issues"
+  },
+  "homepage": "https://github.com/Peanuts-83/ThomasRanque_7_11022022#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
