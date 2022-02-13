@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- Bootstrap CSS 
+    <!-- Bootstrap CSS
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     -->
@@ -25,7 +25,7 @@
 <body>
     <div class="container">
         <header class="navbar navbar-light py-4 gy-3">
-            <div class="col bg-danger ">
+            <div class="col">
                 <a href="#" class="navbar-brand d-flex w-100 justify-content-center">
                     <img class="m-2" id="logo" src="./assets/logo.png" alt="logo">
                 </a>
@@ -43,16 +43,60 @@
                 </form>
 
 
-                <button class="btn rounded d-inline p-3 mt-3 align-content-center text-white bg-primary" id="tags">
+                <button class="btn rounded d-inline mt-3 text-white bg-primary" id="tags">
                     search value test
-                    <span><i class="far fa-times-circle mx-2"></i></span>
+                    <span><i class="far fa-times-circle ms-2"></i></span>
                 </button>
 
 
-                <div class="row my-3 bg-black" id="subSearch">
-                    <select type="text" name="ingredients" class="form-select-lg py-4 d-inline rounded border-0 text-white bg-primary" id="ingredients">
-                        <option selected>Ingredients</option>
-                    </select>
+                <div class="row my-3 mb-3 gx-0 form-inline align-items-start d-flex flex-nowrap" id="subSearch">
+                    <div class="input-group inactive me-3">
+                        <div class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
+                        Ingredients
+                        </div>
+                        <span class="input-group-text rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="input-group active me-3">
+                        <div class="row align-items-start d-flex flex-nowrap">
+                            <input type="text" name="ingredients" placeholder="Ingredients"
+                            class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
+                            <span class="input-group-text rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-up"></i></span>
+                        </div>
+
+                        <div class="row bg-primary">
+                            sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>
+                        </div>
+                    </div>
+                    <div class="input-group inactive me-3">
+                        <input type="text" name="appareils" placeholder="Appareils"
+                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-success" id="ingredients">
+                        <span class="input-group-text rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="input-group inactive me-3">
+                        <input type="text" name="ustensiles" placeholder="Ustensiles"
+                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-danger" id="ingredients">
+                        <span class="input-group-text rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+
+                    <!-- HIDDEN INPUTS -->
+                    <!-- <div class="input-group me-3">
+                        <input type="text" name="ingredients" placeholder="Ingredients"
+                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
+                        <span class="input-group-text rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="input-group me-3">
+                        <input type="text" name="appareils" placeholder="Appareils"
+                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-success" id="ingredients">
+                        <span class="input-group-text rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="input-group me-3">
+                        <input type="text" name="ustensiles" placeholder="Ustensiles"
+                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-danger" id="ingredients">
+                        <span class="input-group-text rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                     -->
+                    <!-- <div class="col w-auto"></div> -->
+
                 </div>
             </div>
         </header>

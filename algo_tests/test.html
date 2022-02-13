@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test for search algorythm</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        .container div {
+            width: 50%;
+        }
+        .results {
+            font-size: small;
+            color: green;
+        }
+        .for_loop, .array {
+            position: relative;
+        }
+
+        #res_loop, #res_array {
+            position: absolute;
+            top: 0;
+            left: 350px;
+            font-size: small;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="for_loop">
+            <p>FOR LOOP SOLUTION</p>
+            <input type="text" name="loop" id="loop">
+            <button id="loop-btn">test auto</button>
+            <span id="res_loop"></span>
+            <div class="results"></div>
+        </div>
+        <div class="array">
+            <p>ARRAY METHODS SOLUTION</p>
+            <input type="text" name="array" id="array">
+            <button id="array-btn">test auto</button>
+            <span id="res_array"></span>
+            <div class="results"></div>
+        </div>
+    </div>
+    <script src="./test.js"></script>
+</body>
+</html>

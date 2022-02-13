@@ -1,4 +1,4 @@
-@import "./variables_overrides.scss"; 
+@import "./variables_overrides.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
@@ -12,6 +12,9 @@ body {
 #inlineFormInputGroup, #inputBtn {
     background-color: $gray-300;
     font-size: 25px;
+    &::placeholder {
+        color: $gray-500;
+    }
     .fas {
         font-size: 40px;
     }
@@ -20,5 +23,71 @@ body {
 #tags {
     .far {
         font-size: 25px;
+    }
+}
+
+
+// SUB SEARCH //
+#subSearch {
+    width: auto;
+
+    .inactive {
+        display: flex;
+        width: 15%;
+        .form-control {
+            &::placeholder {
+                opacity: 1;
+                color: white;
+            }
+        }
+
+    }
+
+    .active {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        .form-control {
+            &::placeholder {
+                opacity: 1;
+                color: white;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1440px) {
+    #subSearch {
+        .input-group {
+            width: 20%;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #subSearch {
+        .input-group {
+            width: 25%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #mainSearch {
+        width: auto;
+    }
+
+    #subSearch {
+        flex-direction: column;
+        .input-group {
+            width: auto;
+        }
     }
 }
