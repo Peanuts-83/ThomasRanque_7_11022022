@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- Bootstrap CSS
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    -->
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
@@ -30,6 +26,7 @@
                     <img class="m-2" id="logo" src="./assets/logo.png" alt="logo">
                 </a>
 
+                <!-- MAIN SEARCH -->
                 <form action="#">
                     <div class="form-group my-3" id="mainSearch">
                         <div class="input-group ">
@@ -47,25 +44,23 @@
                 </button>
 
 
+                <!-- ALT SEARCH -->
                 <div class="row my-3 gx-3 form-inline align-items-start d-flex flex-nowrap" id="subSearch">
 
-                    <div class="col-1 input-group inactive">
-                        <div class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
+                    <!-- BTN1 INACTIVE -->
+                    <div class="col-1 input-group ingredients inactive">
+                        <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary">
                         Ingredients
-                        </div>
+                        </button>
                         <button class="input-group-text px-3 rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-down"></i></button>
                     </div>
-
-                    <div class="row rounded bg-primary" id="input-ingr">
-                        <div class="col input-group active">
-                            <input type="text" name="ingredients" placeholder="Rechercher un ingrédient" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
+                    <!-- BTN1 ACTIVE -->
+                    <div class="row rounded bg-primary ingredients active">
+                        <div class="col input-group">
+                            <input type="text" name="ingredients" placeholder="Rechercher un ingrédient" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary">
                             <button class="input-group-text px-3 rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-up"></i></button>
-                            <!-- <input type="text" name="ingredients" placeholder="Ingredients"
-                            class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
-                            <span class="input-group-text rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-up"></i></span> -->
                         </div>
-
-                        <div class="row rounded-bottom border-0 text-white bg-primary" id="text-ingr">
+                        <div class="row rounded-bottom border-0 text-white bg-primary result">
                             <div class="col-4 ">
                                 sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
                             </div>
@@ -75,43 +70,60 @@
                             <div class="col-4">
                                 sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
                             </div>
-
                         </div>
                     </div>
 
-
-                    <!-- <div class="input-group inactive me-3">
-                        <input type="text" name="appareils" placeholder="Appareils"
-                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-success" id="ingredients">
-                        <span class="input-group-text rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></span>
+                    <!-- BTN2 INACTIVE -->
+                    <div class="col-1 input-group appareils inactive">
+                        <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-success">
+                        Appareils
+                        </button>
+                        <button class="input-group-text px-3 rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <!-- BTN2 ACTIVE -->
+                    <div class="row rounded bg-success appareils active">
+                        <div class="col input-group">
+                            <input type="text" name="appareils" placeholder="Rechercher un appareil" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-success">
+                            <button class="input-group-text px-3 rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-up"></i></button>
+                        </div>
+                        <div class="row rounded-bottom border-0 text-white bg-success result">
+                            <div class="col-4 ">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                            <div class="col-4">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                            <div class="col-4">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                        </div>
                     </div>
 
-
-                    <div class="input-group inactive me-3">
-                        <input type="text" name="ustensiles" placeholder="Ustensiles"
-                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-danger" id="ingredients">
-                        <span class="input-group-text rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></span>
-                    </div> -->
-
-                    <!-- HIDDEN INPUTS -->
-                    <!-- <div class="input-group me-3">
-                        <input type="text" name="ingredients" placeholder="Ingredients"
-                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-primary" id="ingredients">
-                        <span class="input-group-text rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-down"></i></span>
+                    <!-- BTN3 INACTIVE -->
+                    <div class="col-1 input-group ustensiles inactive">
+                        <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-danger">
+                        Ustensiles
+                        </button>
+                        <button class="input-group-text px-3 rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></button>
                     </div>
-                    <div class="input-group me-3">
-                        <input type="text" name="appareils" placeholder="Appareils"
-                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-success" id="ingredients">
-                        <span class="input-group-text rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></span>
+                    <!-- BTN3 ACTIVE -->
+                    <div class="row rounded bg-danger ustensiles active">
+                        <div class="col input-group">
+                            <input type="text" name="ustensiles" placeholder="Rechercher un ustensile" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-danger">
+                            <button class="input-group-text px-3 rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-up"></i></button>
+                        </div>
+                        <div class="row rounded-bottom border-0 text-white bg-danger result">
+                            <div class="col-4 ">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                            <div class="col-4">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                            <div class="col-4">
+                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group me-3">
-                        <input type="text" name="ustensiles" placeholder="Ustensiles"
-                        class="form-control form-control-lg d-inline py-4 rounded-left border-0 text-white bg-danger" id="ingredients">
-                        <span class="input-group-text rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                     -->
-                    <!-- <div class="col w-auto"></div> -->
-
                 </div>
             </div>
         </header>
@@ -121,26 +133,6 @@
         </main>
     </div>
 
-
-
-
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    -->
-    <!-- ONLY BOOTSTRAP ALOWED -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-        crossorigin="anonymous"></script>
-    -->
     <script src="./scripts/index.js"></script>
 </body>
 

@@ -5,67 +5,72 @@ body {
     margin: 3rem;
 }
 
-#logo {
-    width: 300px;
-}
-
-#inlineFormInputGroup, #inputBtn {
-    background-color: $gray-300;
-    font-size: 25px;
-    &::placeholder {
-        color: $gray-500;
+header {
+    #logo {
+        width: 300px;
     }
-    .fas {
-        font-size: 40px;
-    }
-}
 
-#tags {
-    .far {
+    #inlineFormInputGroup, #inputBtn {
+        background-color: $gray-300;
         font-size: 25px;
-    }
-}
-
-
-// SUB SEARCH //
-#subSearch {
-    width: auto;
-
-    .input-group {
-        display: flex;
-        width: 15%;
-        .form-control {
-            &::placeholder {
-                opacity: .5;
-                color: white;
-            }
+        &::placeholder {
+            color: $gray-500;
         }
-        .row {
-            display: flex;
-            flex-wrap: nowrap;
-            * {
-                flex-shrink: auto;
-            }
+        .fas {
+            font-size: 40px;
         }
     }
 
-    #input-ingr {
-        margin-inline: 10px;
+    #tags {
+        .far {
+            font-size: 25px;
+        }
+    }
+
+    // SUB SEARCH //
+    #subSearch {
         width: auto;
-        input {
-            margin-inline-start: -20px;
+
+        .input-group {
+            display: flex;
+            width: 15%;
+            .form-control {
+                &::placeholder {
+                    opacity: .5;
+                    color: white;
+                }
+            }
         }
-        button {
-            margin-inline-end: -20px;
+
+        .inactive {
+            display: flex;
         }
-        #text-ingr {
-            font-size: larger;
-            line-height: 2;
-            margin-bottom: 10px;
+
+        .active {
+            display: none;
+            margin-inline: 10px;
+            width: auto;
+            input {
+                margin-inline-start: -20px;
+            }
+            button {
+                margin-inline-end: -20px;
+            }
+            .result {
+                font-size: larger;
+                line-height: 2;
+                margin-bottom: 10px;
+            }
+        }
+
+        button:focus {
+            // outline: none;
+            box-shadow: none;
         }
     }
-
 }
+
+
 
 
 
