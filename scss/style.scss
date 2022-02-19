@@ -31,27 +31,37 @@ body {
 #subSearch {
     width: auto;
 
-    .inactive {
+    .input-group {
         display: flex;
         width: 15%;
         .form-control {
             &::placeholder {
-                opacity: 1;
+                opacity: .5;
                 color: white;
             }
         }
-
+        .row {
+            display: flex;
+            flex-wrap: nowrap;
+            * {
+                flex-shrink: auto;
+            }
+        }
     }
 
-    .active {
-        display: flex;
-        flex-direction: column;
+    #input-ingr {
+        margin-inline: 10px;
         width: auto;
-        .form-control {
-            &::placeholder {
-                opacity: 1;
-                color: white;
-            }
+        input {
+            margin-inline-start: -20px;
+        }
+        button {
+            margin-inline-end: -20px;
+        }
+        #text-ingr {
+            font-size: larger;
+            line-height: 2;
+            margin-bottom: 10px;
         }
     }
 
