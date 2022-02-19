@@ -11125,50 +11125,51 @@ body {
 header #logo {
   width: 300px;
 }
-header #inlineFormInputGroup, header #inputBtn {
+header .mainSearch #inlineFormInputGroup, header .mainSearch #inputBtn {
   background-color: #dee2e6;
   font-size: 25px;
+  border-bottom: 0;
+  border-right: 0;
 }
-header #inlineFormInputGroup::placeholder, header #inputBtn::placeholder {
+header .mainSearch #inlineFormInputGroup::placeholder, header .mainSearch #inputBtn::placeholder {
   color: #adb5bd;
 }
-header #inlineFormInputGroup .fas, header #inputBtn .fas {
+header .mainSearch #inlineFormInputGroup .fas, header .mainSearch #inputBtn .fas {
   font-size: 40px;
 }
-header #tags .far {
+header .mainSearch .tags .far {
   font-size: 25px;
 }
-header #subSearch {
+header .subSearch {
   width: auto;
 }
-header #subSearch .input-group {
+header .subSearch .input-group {
   display: flex;
   width: 15%;
 }
-header #subSearch .input-group .form-control::placeholder {
+header .subSearch .input-group .form-control::placeholder {
   opacity: 0.5;
   color: white;
 }
-header #subSearch .inactive {
+header .subSearch .inactive {
   display: flex;
 }
-header #subSearch .active {
+header .subSearch .active {
   display: none;
-  margin-inline: 10px;
   width: auto;
 }
-header #subSearch .active input {
+header .subSearch .active input {
   margin-inline-start: -20px;
 }
-header #subSearch .active button {
+header .subSearch .active button {
   margin-inline-end: -20px;
 }
-header #subSearch .active .result {
+header .subSearch .active .result {
   font-size: larger;
   line-height: 2;
   margin-bottom: 10px;
 }
-header #subSearch button:focus {
+header .subSearch button:focus {
   box-shadow: none;
 }
 

@@ -10,25 +10,31 @@ header {
         width: 300px;
     }
 
-    #inlineFormInputGroup, #inputBtn {
-        background-color: $gray-300;
-        font-size: 25px;
-        &::placeholder {
-            color: $gray-500;
+    // MAIN SEARCH //
+    .mainSearch {
+        #inlineFormInputGroup, #inputBtn {
+            background-color: $gray-300;
+            font-size: 25px;
+            border-bottom: 0;
+            border-right: 0;
+            &::placeholder {
+                color: $gray-500;
+            }
+            .fas {
+                font-size: 40px;
+            }
         }
-        .fas {
-            font-size: 40px;
+
+        .tags {
+            .far {
+                font-size: 25px;
+            }
         }
     }
 
-    #tags {
-        .far {
-            font-size: 25px;
-        }
-    }
 
     // SUB SEARCH //
-    #subSearch {
+    .subSearch {
         width: auto;
 
         .input-group {
@@ -48,7 +54,6 @@ header {
 
         .active {
             display: none;
-            margin-inline: 10px;
             width: auto;
             input {
                 margin-inline-start: -20px;

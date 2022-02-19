@@ -27,34 +27,42 @@
                 </a>
 
                 <!-- MAIN SEARCH -->
-                <form action="#">
-                    <div class="form-group my-3" id="mainSearch">
-                        <div class="input-group ">
-                            <input type="text" class="form-control form-control-lg rounded-left border-0 p-4"
-                                id="inlineFormInputGroup" placeholder="Rechercher une recette">
-                            <div class="input-group-append rounded" id="inputBtn">
-                                <div class="btn p-3"><i class="fas fa-search"></i></div>
+                <div class="mainSearch">
+                    <form action="#">
+                        <div class="form-group my-3" id="mainSearch">
+                            <div class="input-group ">
+                                <input type="text" class="form-control form-control-lg rounded-left border-0 p-4"
+                                    id="inlineFormInputGroup" placeholder="Rechercher une recette">
+                                <button class="input-group-append rounded" id="inputBtn">
+                                    <div class="btn p-3"><i class="fas fa-search"></i></div>
+                                </button>
                             </div>
                         </div>
+                    </form>
+
+                    <!-- TAGS -->
+                    <div class="tags">
+                        <button class="btn rounded d-inline text-white bg-primary" id="tag#1">
+                            coco
+                            <span><i class="far fa-times-circle ms-2"></i></span>
+                        </button>
                     </div>
-                </form>
-                <button class="btn rounded d-inline mt-3 text-white bg-primary" id="tags">
-                    search value test
-                    <span><i class="far fa-times-circle ms-2"></i></span>
-                </button>
+
+                </div>
 
 
-                <!-- ALT SEARCH -->
-                <div class="row my-3 gx-3 form-inline align-items-start d-flex flex-nowrap" id="subSearch">
 
-                    <!-- BTN1 INACTIVE -->
+                <!-- SUB SEARCH -->
+                <div class="row my-3 gx-3 form-inline align-items-start d-flex flex-nowrap subSearch">
+
+                    <!-- BTN1 INACTIVE
                     <div class="col-1 input-group ingredients inactive">
                         <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary">
                         Ingredients
                         </button>
                         <button class="input-group-text px-3 rounded-right border-0 text-white bg-primary"><i class="fas fa-chevron-down"></i></button>
-                    </div>
-                    <!-- BTN1 ACTIVE -->
+                    </div>-->
+                    <!-- BTN1 ACTIVE
                     <div class="row rounded bg-primary ingredients active">
                         <div class="col input-group">
                             <input type="text" name="ingredients" placeholder="Rechercher un ingrédient" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-primary">
@@ -71,59 +79,10 @@
                                 sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- BTN2 INACTIVE -->
-                    <div class="col-1 input-group appareils inactive">
-                        <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-success">
-                        Appareils
-                        </button>
-                        <button class="input-group-text px-3 rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-down"></i></button>
-                    </div>
-                    <!-- BTN2 ACTIVE -->
-                    <div class="row rounded bg-success appareils active">
-                        <div class="col input-group">
-                            <input type="text" name="appareils" placeholder="Rechercher un appareil" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-success">
-                            <button class="input-group-text px-3 rounded-right border-0 text-white bg-success"><i class="fas fa-chevron-up"></i></button>
-                        </div>
-                        <div class="row rounded-bottom border-0 text-white bg-success result">
-                            <div class="col-4 ">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                            <div class="col-4">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                            <div class="col-4">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- BTN3 INACTIVE -->
-                    <div class="col-1 input-group ustensiles inactive">
-                        <button class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-danger">
-                        Ustensiles
-                        </button>
-                        <button class="input-group-text px-3 rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-down"></i></button>
-                    </div>
-                    <!-- BTN3 ACTIVE -->
-                    <div class="row rounded bg-danger ustensiles active">
-                        <div class="col input-group">
-                            <input type="text" name="ustensiles" placeholder="Rechercher un ustensile" class="form-control form-control-lg py-4 rounded-left border-0 text-white bg-danger">
-                            <button class="input-group-text px-3 rounded-right border-0 text-white bg-danger"><i class="fas fa-chevron-up"></i></button>
-                        </div>
-                        <div class="row rounded-bottom border-0 text-white bg-danger result">
-                            <div class="col-4 ">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                            <div class="col-4">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                            <div class="col-4">
-                                sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd <br> hvgjhjh <br> hufujm <br>sqdqsd
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </header>
@@ -132,7 +91,7 @@
 
         </main>
     </div>
-
+    <script src="./scripts/factory.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
