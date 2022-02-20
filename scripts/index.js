@@ -31,16 +31,23 @@ const inactive = subSearch.querySelectorAll('#inactive');
 // TODO: ADD RESPONSE CARDS
 
 
+////////////
+// SEARCH //
+
+
 //////////
 // TAGS //
 function closeTag(e) {
-    console.log(e);
-
+    const tagBtns = [...tags.querySelectorAll('button')];
+    const [ container ] = tagBtns.filter(btn => btn.contains(e.target));
+    container.remove();
 }
 
 
 ///////////////
-// BTNS SWAP //
+// SUB SEARCH //
+
+// BTN SWAP
 inactive.forEach(btn => btn.addEventListener('click', swapSubSearch));
 active.forEach(btn => btn.querySelector('button').addEventListener('click', swapSubSearch));
 

@@ -11178,6 +11178,25 @@ header .subSearch #active .result {
   margin-bottom: 10px;
 }
 
+.container .container-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+.container .container-row .card img {
+  width: auto;
+}
+.container .container-row .card .card-title .fa-clock {
+  font-size: 24px;
+}
+.container .container-row .card .card-text {
+  line-height: normal;
+  font-size: 14px;
+}
+.container .container-row .card .card-text p {
+  margin: 0;
+}
+
 @media screen and (max-width: 1440px) {
   #subSearch .input-group {
     width: 20%;
