@@ -95,11 +95,16 @@ header {
                 }
             }
             .card-text{
-                line-height: normal;
+                height: 200px;
                 font-size: 14px;
-
                 p {
                     margin: 0;
+                }
+                .recipe p {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 10;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
             }
         }

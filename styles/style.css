@@ -11190,11 +11190,17 @@ header .subSearch #active .result {
   font-size: 24px;
 }
 .container .container-row .card .card-text {
-  line-height: normal;
+  height: 200px;
   font-size: 14px;
 }
 .container .container-row .card .card-text p {
   margin: 0;
+}
+.container .container-row .card .card-text .recipe p {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1440px) {
