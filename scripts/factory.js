@@ -99,10 +99,10 @@ class BtnSubSearch {
 //////////////////
 // CARD Factory //
 const fakePhotos = [
-    '../assets/photos/jay-wennington-N_Y88TWmGwA-unsplash.jpg',
-    '../assets/photos/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg',
-    '../assets/photos/stil-u2Lp8tXIcjw-unsplash.jpg',
-    '../assets/photos/toa-heftiba-DQKerTsQwi0-unsplash.jpg'
+    './assets/photos/jay-wennington-N_Y88TWmGwA-unsplash.jpg',
+    './assets/photos/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg',
+    './assets/photos/stil-u2Lp8tXIcjw-unsplash.jpg',
+    './assets/photos/toa-heftiba-DQKerTsQwi0-unsplash.jpg'
 ];
 
 class Card {
@@ -115,7 +115,7 @@ class Card {
     }
     make() {
         const card = document.createElement('div');
-        const img = document.createElement('img');
+        const img = document.createElement('div');
         const cardBody = document.createElement('div');
         const cardTitle = document.createElement('div');
         const cardText = document.createElement('div');
@@ -124,15 +124,16 @@ class Card {
 
         card.classList = 'card p-0';
         img.classList = 'card-img-top';
-        img.src = this.setPhoto();
-        img.alt = `Photo de la recette: ${this.name}`;
+        console.log(this.setPhoto())
+        img.style.background = `#fff url("${this.setPhoto()}") no-repeat`;
+        img.style['background-size'] = 'cover';
         cardBody.classList = 'card-body';
         cardTitle.classList = 'card-title row m-0 w-50 d-inline-flex flex-nowrap align-items-end';
         cardTitle.innerHTML = `<h4 class="p-0">${this.name}</h4>
         <h5 class="timer p-0 d-flex align-items-center justify-content-end"><i class="far fa-clock mx-2"></i> ${this.time} min</h5>`;
         cardText.classList = 'row card-text m-0 mt-3 justify-content-between';
         ingrList.classList = 'col-6 p-0 pe-2';
-        ingrList.innerHTML = getIngredients();
+        ingrList.innerHTML = this.getIngredients();
         description.classList = 'col-6 p-0 ps-2 recipe';
         description.innerHTML = `<p>${this.description}</p>`;
 
@@ -146,5 +147,12 @@ class Card {
     }
     setPhoto() {
         return fakePhotos[Math.floor(Math.random() * fakePhotos.length)];
+    }
+    getIngredients() {
+        let res = '';
+        for (let elt of this.ingredients) {
+            res += `<p><strong>${elt.ingredient}:</strong> ${elt.quantity} ${elt.unit}</p>`;
+        }
+        return res;
     }
 }

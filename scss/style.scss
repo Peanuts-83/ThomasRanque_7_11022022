@@ -97,8 +97,9 @@ main {
 
         .card {
             background-color: $gray-300;
-            img {
+            .card-img-top {
                 width: auto;
+                height: 200px !important;
             }
             .card-title {
                 .fa-clock {

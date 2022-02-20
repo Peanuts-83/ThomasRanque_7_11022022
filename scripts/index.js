@@ -22,6 +22,7 @@ init();
 
 // DOM ELEMENTS initiated after DOM BUILD
 const search = document.querySelector('.mainSearch form');
+const mainInput = search.querySelector('#mainSearchInput');
 const submit = search.querySelector('button');
 const ingredients = subSearch.querySelectorAll('.ingredients');
 const appareils = subSearch.querySelectorAll('.appareils');
@@ -33,8 +34,9 @@ const results = document.querySelector('main .container-row');
 
 ////////////
 // SEARCH //
-let searchResult = [];
-// submit.addEventListener('click', searchRecipes);    // to search.js function
+window.addEventListener('load', initRecipes);       // to search.js function //TODO: Ask if prealoder ok?
+mainInput.addEventListener('input', searchRecipes);    // to search.js function
+search.addEventListener('submit', (e) => e.preventDefault());
 
 
 //////////

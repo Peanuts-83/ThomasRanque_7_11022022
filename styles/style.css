@@ -11196,8 +11196,9 @@ main .container-row {
 main .container-row .card {
   background-color: #dee2e6;
 }
-main .container-row .card img {
+main .container-row .card .card-img-top {
   width: auto;
+  height: 200px !important;
 }
 main .container-row .card .card-title .fa-clock {
   font-size: 24px;

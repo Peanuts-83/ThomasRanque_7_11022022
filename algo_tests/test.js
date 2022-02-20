@@ -23,8 +23,8 @@ function getRecipes() {
 // INIT
 async function init() {
     recipes = await getRecipes();
-    loopSolution.onchange = search;
-    arraySolution.onchange = search;
+    loopSolution.oninput = search;
+    arraySolution.oninput = search;
 }
 
 init();
