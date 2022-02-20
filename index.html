@@ -21,11 +21,11 @@
     <title>Les petits plats</title>
 </head>
 
-<body>
-    <div class="container">
+<body class="m-2 m-sm-3 m-md-4">
+    <div class="container px-0 px-sm-1 px-md-3">
         <header class="navbar navbar-light py-4 gy-3">
-            <div class="col">
-                <a href="#" class="navbar-brand d-flex w-100 justify-content-center">
+            <div class="col px-0 mx-0">
+                <a href="#" class="navbar-brand d-flex m-0 w-auto justify-content-center">
                     <img class="m-2" id="logo" src="./assets/logo.png" alt="logo">
                 </a>
 
@@ -34,8 +34,8 @@
                     <form action="#">
                         <div class="form-group my-3" id="mainSearch">
                             <div class="input-group ">
-                                <input type="text" class="form-control form-control-lg rounded-left border-0 p-4"
-                                    id="inlineFormInputGroup" placeholder="Rechercher une recette">
+                                <input type="text" class="form-control md-form-control-lg rounded-left border-0 "
+                                    id="mainSearchInput" placeholder="Rechercher une recette">
                                 <button class="input-group-append rounded" id="inputBtn">
                                     <div class="btn p-3"><i class="fas fa-search"></i></div>
                                 </button>
@@ -44,14 +44,14 @@
                     </form>
 
                     <!-- TAGS -->
-                    <div class="row mx-0 gap-2 d-flex flex-nowrap tags">
+                    <div class="row mx-0 gap-2 d-flex tags">
                     </div>
                 </div>
 
 
 
                 <!-- SUB SEARCH -->
-                <div class="row mx-0 my-3 gap-3 form-inline align-items-start d-flex flex-nowrap subSearch">
+                <div class="row mx-0 my-3 me-auto gap-3 form-inline justify-content-start subSearch">
 
                     <!-- BTN1 INACTIVE
                     <div class="col-1 input-group ingredients inactive">
@@ -83,8 +83,8 @@
             </div>
         </header>
 
-        <main class="container">
-            <div class="row container-row">
+        <main>
+            <div class="row gx-0 container-row">
                 <div class="card p-0">
                     <img src="./assets/photos/jay-wennington-N_Y88TWmGwA-unsplash.jpg" class="card-img-top" alt="photo recette">
                     <div class="card-body">
@@ -92,14 +92,14 @@
                             <h4 class="p-0">Recette</h4>
                             <h5 class="timer p-0 d-flex align-items-center justify-content-end"><i class="far fa-clock mx-2"></i> 10 min</h5>
                         </div>
-                        <div class="row card-text m-0 d-inline-flex flex-nowrap justify-content-between">
-                            <div class="col-4 p-0 pe-2">
+                        <div class="row card-text m-0 mt-3 justify-content-between">
+                            <div class="col-6 p-0 pe-2">
                                 <p><strong>ingr:</strong> 4000000ml</p>
                                 <p><strong>ingr:</strong> 400ml</p>
                                 <p><strong>ingr:</strong> 400ml</p>
                                 <p><strong>ingr:</strong> 400ml</p>
                             </div>
-                            <div class="col-8 p-0 ps-2 recipe ">
+                            <div class="col-6 p-0 ps-2 recipe ">
                                 <p class="">oskasas asas as as as ass asasasas a sas as a sas a sasasasad sda saas as asasssasa... Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique modi quasi repudiandae, eligendi quo fugiat veritatis eius deleniti neque doloremque impedit iure tenetur non molestiae vel laborum maxime nesciunt et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corporis eum odit omnis deserunt autem quidem! Maiores nisi sapiente repellat aliquam eius natus quae quis molestias? Sapiente veritatis hic fuga!</p>
                             </div>
 

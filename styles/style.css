@@ -11127,32 +11127,42 @@ button:focus, input:focus {
 }
 
 header #logo {
-  width: 300px;
+  width: 200px;
 }
-header .mainSearch #inlineFormInputGroup, header .mainSearch #inputBtn {
-  background-color: #dee2e6;
-  font-size: 25px;
+header .mainSearch #mainSearch .input-group {
+  width: auto;
+}
+header .mainSearch #mainSearch .input-group #mainSearchInput, header .mainSearch #mainSearch .input-group #inputBtn {
+  font-size: 16px;
   border-bottom: 0;
   border-right: 0;
+  background-color: #dee2e6;
 }
-header .mainSearch #inlineFormInputGroup::placeholder, header .mainSearch #inputBtn::placeholder {
+header .mainSearch #mainSearch .input-group #mainSearchInput::placeholder, header .mainSearch #mainSearch .input-group #inputBtn::placeholder {
   color: #adb5bd;
 }
-header .mainSearch #inlineFormInputGroup .fas, header .mainSearch #inputBtn .fas {
-  font-size: 40px;
+header .mainSearch #mainSearch .input-group #mainSearchInput .fas, header .mainSearch #mainSearch .input-group #inputBtn .fas {
+  font-size: 20px;
 }
 header .mainSearch .tags {
   width: auto;
 }
+header .mainSearch .tags .btn {
+  font-size: 12px;
+}
 header .mainSearch .tags .far {
-  font-size: 25px;
+  font-size: 14px;
 }
 header .subSearch {
   width: auto;
+  flex-direction: column;
 }
 header .subSearch .input-group {
   display: flex;
-  width: 15%;
+  width: auto;
+}
+header .subSearch .input-group .form-control {
+  font-size: 18px;
 }
 header .subSearch .input-group .form-control::placeholder {
   opacity: 0.5;
@@ -11160,69 +11170,106 @@ header .subSearch .input-group .form-control::placeholder {
 }
 header .subSearch #inactive {
   display: flex;
+  width: 100%;
 }
 header .subSearch #active {
   display: none;
-  width: auto;
-  margin-inline: 10px;
+  width: 100%;
+  margin-inline: 0;
 }
 header .subSearch #active input {
-  margin-inline-start: -20px;
+  margin-inline-start: 0;
 }
 header .subSearch #active button {
-  margin-inline-end: -20px;
+  margin-inline-end: 0;
 }
 header .subSearch #active .result {
-  font-size: larger;
-  line-height: 2;
-  margin-bottom: 10px;
+  font-size: smaller;
+  line-height: 1;
 }
 
-.container .container-row {
+main .container-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 15px;
 }
-.container .container-row .card img {
+main .container-row .card {
+  background-color: #dee2e6;
+}
+main .container-row .card img {
   width: auto;
 }
-.container .container-row .card .card-title .fa-clock {
+main .container-row .card .card-title .fa-clock {
   font-size: 24px;
 }
-.container .container-row .card .card-text {
-  height: 200px;
+main .container-row .card .card-text {
+  max-height: 200px;
   font-size: 14px;
 }
-.container .container-row .card .card-text p {
+main .container-row .card .card-text p {
   margin: 0;
 }
-.container .container-row .card .card-text .recipe p {
+main .container-row .card .card-text .recipe p {
   display: -webkit-box;
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-@media screen and (max-width: 1440px) {
-  #subSearch .input-group {
-    width: 20%;
+@media (min-width: 768px) {
+  header #logo {
+    width: 300px;
   }
-}
-@media screen and (max-width: 992px) {
-  #subSearch .input-group {
-    width: 25%;
-  }
-}
-@media screen and (max-width: 768px) {
-  #mainSearch {
+  header .mainSearch #mainSearch .input-group {
     width: auto;
+  }
+  header .mainSearch #mainSearch .input-group #mainSearchInput, header .mainSearch #mainSearch .input-group #inputBtn {
+    font-size: 25px;
+  }
+  header .mainSearch #mainSearch .input-group #mainSearchInput .fas, header .mainSearch #mainSearch .input-group #inputBtn .fas {
+    font-size: 40px;
+  }
+  header .mainSearch .tags .btn {
+    font-size: 18px;
+  }
+  header .mainSearch .tags .far {
+    font-size: 24px;
+  }
+  header .subSearch {
+    flex-direction: row;
+  }
+  header .subSearch .input-group .form-control {
+    font-size: 21px;
+  }
+  header .subSearch #inactive {
+    width: auto;
+  }
+  header .subSearch #active {
+    width: auto;
+    margin-inline: 10px;
+  }
+  header .subSearch #active input {
+    margin-inline-start: -20px;
+  }
+  header .subSearch #active button {
+    margin-inline-end: -20px;
+  }
+  header .subSearch #active .result {
+    font-size: larger;
+    line-height: 2;
   }
 
-  #subSearch {
-    flex-direction: column;
+  main .container-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
-  #subSearch .input-group {
-    width: auto;
+}
+@media (min-width: 992px) {
+  main .container-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
   }
 }
 
