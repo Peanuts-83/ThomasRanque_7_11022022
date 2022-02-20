@@ -5,6 +5,10 @@ body {
     margin: 3rem;
 }
 
+button:focus, input:focus {
+    box-shadow: none !important;
+}
+
 header {
     #logo {
         width: 300px;
@@ -26,6 +30,8 @@ header {
         }
 
         .tags {
+            width: auto;
+            
             .far {
                 font-size: 25px;
             }
@@ -48,13 +54,14 @@ header {
             }
         }
 
-        .inactive {
+        #inactive {
             display: flex;
         }
 
-        .active {
+        #active {
             display: none;
             width: auto;
+            margin-inline: 10px;
             input {
                 margin-inline-start: -20px;
             }
@@ -66,11 +73,6 @@ header {
                 line-height: 2;
                 margin-bottom: 10px;
             }
-        }
-
-        button:focus {
-            // outline: none;
-            box-shadow: none;
         }
     }
 }
