@@ -28,11 +28,13 @@ const appareils = subSearch.querySelectorAll('.appareils');
 const ustensiles = subSearch.querySelectorAll('.ustensiles');
 const active = subSearch.querySelectorAll('#active');
 const inactive = subSearch.querySelectorAll('#inactive');
-// TODO: ADD RESPONSE CARDS
+const results = document.querySelector('main .container-row');
 
 
 ////////////
 // SEARCH //
+let searchResult = [];
+// submit.addEventListener('click', searchRecipes);    // to search.js function
 
 
 //////////
@@ -59,11 +61,19 @@ function swapSubSearch(e) {
     const [container] = [...active].filter(elt => elt.contains(e.target)).length > 0
         ? [...active].filter(elt => elt.contains(e.target))
         : [...inactive].filter(elt => elt.contains(e.target));
-    console.log(container)
     const isActive = container.id;
     const type = container.classList[container.classList.length - 1];
     const [siblingContainer] = [...subSearch.querySelectorAll(`.${type}`)].filter(elt => elt.id != isActive);
 
     container.style.display = 'flex' ? 'none' : 'flex';
     siblingContainer.style.display = container.style.display == 'flex' ? 'none' : 'flex';
+}
+
+
+/////////////////
+// RESULT CARD //
+function displayResults() {
+    for (let recipe of searchResult) {
+        results.appendChild(recipe);
+    }
 }

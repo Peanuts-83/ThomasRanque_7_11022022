@@ -1,4 +1,5 @@
-// TAGS Factory
+//////////////////
+// TAGS Factory //
 class Tag {
     static #idNum = 0;
     constructor(type, txt) {
@@ -25,13 +26,13 @@ class Tag {
         tag.id = `id#${this.idNum}`;
         tag.innerHTML = `${this.txt} <span><i class="far fa-times-circle ms-2"></i></span>`;
         tag.addEventListener('click', closeTag);
-        console.log(tag)
         return tag;
     }
 }
 
 
-//BTN SUB SEARCH Factory
+///////////////////////////
+//BTN SUB SEARCH Factory //
 class BtnSubSearch {
     constructor(type) {
         this.type = type;
@@ -53,12 +54,14 @@ class BtnSubSearch {
         const container = document.createElement('div');
         const btn1 = document.createElement('button');
         const btn2 = document.createElement('button');
+
         container.classList = `col-1 px-0 input-group ${this.type}`;
         container.id = 'inactive';
         btn1.classList = `form-control form-control-lg py-4 rounded-left border-0 text-white bg-${this.color}`;
         btn1.innerText = this.type[0].toUpperCase() + this.type.substr(1);
         btn2.classList = `input-group-text px-3 rounded-right border-0 text-white bg-${this.color}`;
         btn2.innerHTML = '<i class="fas fa-chevron-down"></i>';
+
         container.appendChild(btn1);
         container.appendChild(btn2);
         return container;
@@ -69,6 +72,7 @@ class BtnSubSearch {
         const input = document.createElement('input');
         const btn = document.createElement('button');
         const divR = document.createElement('div');
+
         container.className = `row rounded bg-${this.color} ${this.type}`;
         container.id = 'active';
         divQ.classList = `col input-group`;
@@ -81,11 +85,66 @@ class BtnSubSearch {
         divQ.appendChild(input);
         divQ.appendChild(btn);
         divR.classList = `row rounded-bottom border-0 text-white bg-${this.color} result`;
+
         container.appendChild(divQ);
         container.appendChild(divR);
         return container;
     }
     make() {
         return [this.makeInactive(), this.makeActive()];
+    }
+}
+
+
+//////////////////
+// CARD Factory //
+const fakePhotos = [
+    '../assets/photos/jay-wennington-N_Y88TWmGwA-unsplash.jpg',
+    '../assets/photos/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg',
+    '../assets/photos/stil-u2Lp8tXIcjw-unsplash.jpg',
+    '../assets/photos/toa-heftiba-DQKerTsQwi0-unsplash.jpg'
+];
+
+class Card {
+    constructor(recipe) {
+        this.recipe = recipe;
+        this.name = recipe.name;
+        this.time = recipe.time;
+        this.ingredients = recipe.ingredients;
+        this.description = recipe.description;
+    }
+    make() {
+        const card = document.createElement('div');
+        const img = document.createElement('img');
+        const cardBody = document.createElement('div');
+        const cardTitle = document.createElement('div');
+        const cardText = document.createElement('div');
+        const ingrList = document.createElement('div');
+        const description = document.createElement('div');
+
+        card.classList = 'card p-0';
+        img.classList = 'card-img-top';
+        img.src = this.setPhoto();
+        img.alt = `Photo de la recette: ${this.name}`;
+        cardBody.classList = 'card-body';
+        cardTitle.classList = 'card-title row m-0 w-50 d-inline-flex flex-nowrap align-items-end';
+        cardTitle.innerHTML = `<h4 class="p-0">${this.name}</h4>
+        <h5 class="timer p-0 d-flex align-items-center justify-content-end"><i class="far fa-clock mx-2"></i> ${this.time} min</h5>`;
+        cardText.classList = 'row card-text m-0 mt-3 justify-content-between';
+        ingrList.classList = 'col-6 p-0 pe-2';
+        ingrList.innerHTML = getIngredients();
+        description.classList = 'col-6 p-0 ps-2 recipe';
+        description.innerHTML = `<p>${this.description}</p>`;
+
+        card.appendChild(img);
+        card.appendChild(cardBody);
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+        cardText.appendChild(ingrList);
+        cardText.appendChild(description);
+        return card;
+    }
+    setPhoto() {
+        return fakePhotos[Math.floor(Math.random() * fakePhotos.length)];
     }
 }

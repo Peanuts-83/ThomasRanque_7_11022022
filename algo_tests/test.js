@@ -40,7 +40,9 @@ function search() {
 
 }
 
-// FOR LOOP SOLUTION
+
+///////////////////////
+// FOR LOOP SOLUTION //
 function loopAlgo(query) {
     if (query == 'end') {
         let res = loopTimes.reduce((sum, ms) => sum + ms, 0);
@@ -84,7 +86,9 @@ function loopAlgo(query) {
     console.timeEnd('OPTION 1 - LOOP');
 }
 
-// ARRAY SOLUTION
+
+////////////////////
+// ARRAY SOLUTION //
 function arrayAlgo(query) {
     if (query == 'end') {
         let res = arrayTimes.reduce((sum, ms) => sum + ms, 0);
@@ -110,7 +114,9 @@ function arrayAlgo(query) {
     console.timeEnd('OPTION 2 - ARRAY');
 }
 
-// TESTS FUNCTIONS
+
+/////////////////////
+// AUTO-TEST FUNCTIONS //
 loopBtn.onclick = () => test('loop');
 arrayBtn.addEventListener('click', () => test('array'));
 let [loopTimes, arrayTimes] = [[], []];
