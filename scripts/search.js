@@ -23,7 +23,7 @@ function searchRecipes() {
     const query = this.value;
     if (query.length > 2) {
         let [ searchArray, results ] = [[], []];
-        // CHECK FOR ERASE STRING
+        // CHECK FOR ERASE STRING / Keep old search OR reload all recipes
         if (queryLength > query.length) {
             searchArray = [...recipes];
         } else {
