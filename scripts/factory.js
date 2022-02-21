@@ -132,7 +132,7 @@ class Card {
         cardTitle.innerHTML = `<h4 class="p-0">${this.name}</h4>
         <h5 class="timer p-0 d-flex align-items-center justify-content-end"><i class="far fa-clock mx-2"></i> ${this.time} min</h5>`;
         cardText.classList = 'row card-text m-0 mt-3 justify-content-between';
-        ingrList.classList = 'col-6 p-0 pe-2';
+        ingrList.classList = 'col-6 p-0 pe-2 ingredients';
         ingrList.innerHTML = this.getIngredients();
         description.classList = 'col-6 p-0 ps-2 recipe';
         description.innerHTML = `<p>${this.description}</p>`;
@@ -151,7 +151,7 @@ class Card {
     getIngredients() {
         let res = '';
         for (let elt of this.ingredients) {
-            res += `<p><strong>${elt.ingredient}:</strong> ${elt.quantity} ${elt.unit}</p>`;
+            res += `<p><strong>${elt.ingredient}:</strong> ${elt.quantity} ${elt.unit ? elt.unit : ''}</p>`;
         }
         return res;
     }

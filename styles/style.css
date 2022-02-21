@@ -11210,6 +11210,11 @@ main .container-row .card .card-text {
 main .container-row .card .card-text p {
   margin: 0;
 }
+main .container-row .card .card-text .ingredients {
+  font-size: 13px;
+  max-height: 215px !important;
+  overflow: hidden;
+}
 main .container-row .card .card-text .recipe p {
   display: -webkit-box;
   -webkit-line-clamp: 10;

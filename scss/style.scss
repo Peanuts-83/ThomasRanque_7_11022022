@@ -88,7 +88,7 @@ header {
     }
 }
 
-// MAIN //
+// MAIN RESULTS //
 main {
     .container-row {
         display: grid;
@@ -111,6 +111,11 @@ main {
                 font-size: 14px;
                 p {
                     margin: 0;
+                }
+                .ingredients {
+                    font-size: 13px;
+                    max-height: 215px !important;
+                    overflow: hidden;
                 }
                 .recipe p {
                     display: -webkit-box;
