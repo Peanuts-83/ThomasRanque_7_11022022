@@ -16,9 +16,9 @@ function getRecipes() {
 // INIT
 async function initRecipes() {
     recipes = await getRecipes();
+    mainInput.value = '';
     this.value= '';
     searchRecipes();
-    console.log('THIS INIT',this.value)
 }
 
 /////////////////
@@ -37,7 +37,6 @@ function searchRecipes() {
         for (let recipe of searchArray) {
             let _added = false;
             if (recipe.name.toLowerCase().includes(query)) {
-                console.log(typeof recipe)
                 results.push(recipe);
                 _added = true;
             } else if (recipe.description.toLowerCase().includes(query) && !_added) {
@@ -52,14 +51,23 @@ function searchRecipes() {
                 }
             }
         }
+
         searchResult = [...results];
-        // console.log('RES RECIPES:', searchResult);
         queryLength = query.length;
-        displayRecipes(searchResult);
+        if (tags.children.length > 0) {
+            filterTag();
+        } else {
+            displayRecipes(searchResult);
+        }
+        // console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length, '- TAGS LENGTH:', tags.children.length);
     } else {
         searchResult = [...recipes];
         queryLength = 0;
-        displayRecipes([...recipes])
+        if (tags.children.length > 0) {
+            filterTag();
+        } else {
+            displayRecipes(searchResult);
+        }
     }
 }
 
@@ -77,25 +85,65 @@ function displayRecipes(data) {
 ////////////////
 // SUB-SEARCH //
 
+// FILTER RECIPES WITH TAG
+function filterTag() {
+    let baseSearch = searchResult;
+    const tagsArray = [...tags.children];
+
+    tagsArray.forEach(elt => {
+        const type = elt.title;
+        const value = elt.id;
+        baseSearch = baseSearch.filter(recipe => {
+            switch(type) {
+                case 'ingredients':
+                    return recipe[type].some(ingr => ingr.ingredient.toLowerCase() == value);
+                    break;
+                case 'appliance':
+                    return recipe.appliance.toLowerCase() == value;
+                case 'ustensils':
+                    return recipe.ustensils.some(ust => ust.toLowerCase() == value);
+                default:
+                    console.log(`Error filtering with TAG ${value}.`);
+            }
+        })
+    })
+    displayRecipes(baseSearch);
+}
+
 // GET TAGS
 function getTags(type) {
     let tagList = new Set();
-    for (let recipe of recipes) {
+    console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length)
+
+    for (let recipe of searchResult) {
         if (recipe[type]) {
             switch(type) {
                 case 'ingredients':
-                    recipe[type].forEach(ingr => tagList.add(ingr.ingredient));
+                    recipe[type].forEach(ingr => tagList.add(ingr.ingredient.toLowerCase()));
                     break;
                 case 'appliance':
-                    tagList.add(recipe[type]);
+                    tagList.add(recipe[type].toLowerCase());
                     break;
                 case 'ustensils':
-                    recipe[type].forEach(ust => tagList.add(ust));
+                    recipe[type].forEach(ust => tagList.add(ust.toLowerCase()));
                     break;
                 default:
                     console.log('Error parsing Tag list.');
             }
         }
     }
-    return tagList;
+
+    return [...tagList].sort((a,b) => {
+        // WORDS WITHOUT ACCENTS
+        const A = a.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const B = b.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        // SORT WORDS
+        if (A < B) {
+            return -1;
+        } else if (A > B) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
 }

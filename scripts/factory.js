@@ -23,8 +23,8 @@ class Tag {
     make() {
         const tag = document.createElement('button');
         tag.classList = `btn w-auto rounded d-flex align-items-center text-white bg-${this.color}`;
-        tag.id = `id#${this.idNum}`;
-        tag.title = this.txt;
+        tag.id = this.txt;
+        tag.title = this.type;
         tag.innerHTML = `${this.txt} <span><i class="far fa-times-circle ms-2"></i></span>`;
         tag.addEventListener('click', closeTag);
         return tag;
@@ -130,7 +130,7 @@ class Card {
         img.style.background = `#fff url("${this.setPhoto()}") no-repeat`;
         img.style['background-size'] = 'cover';
         cardBody.classList = 'card-body';
-        cardTitle.classList = 'card-title row m-0 w-50 d-inline-flex flex-nowrap align-items-end';
+        cardTitle.classList = 'card-title row m-0 w-50 d-inline-flex flex-nowrap align-items-start';
         cardTitle.innerHTML = `<h4 class="p-0">${this.name}</h4>
         <h5 class="timer p-0 d-flex align-items-center justify-content-end"><i class="far fa-clock mx-2"></i> ${this.time} min</h5>`;
         cardText.classList = 'row card-text m-0 mt-3 justify-content-between';

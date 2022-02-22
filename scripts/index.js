@@ -36,6 +36,17 @@ search.addEventListener('submit', (e) => e.preventDefault());
 
 //////////
 // TAGS //
+observer = new MutationObserver(() => { filterTag() });
+observer.observe(tags, {characterData: false, childList: true, attributes: false});
+
+
+// ADD TAG
+function addTag(type, target) {
+    const tag = new Tag(type, target.innerHTML).make();
+    tags.appendChild(tag);
+}
+
+// CLOSE TAG
 function closeTag(e) {
     const tagBtns = [...tags.querySelectorAll('button')];
     const [container] = tagBtns.filter(btn => btn.contains(e.target));
@@ -81,6 +92,7 @@ function listTags(type) {
 
     // DISPLAY TAGS IN SUB SEARCH BTN
     let tagList = getTags(type);
+    tagResult.innerHTML = '';
     for (let tag of tagList) {
         tagResult.innerHTML += `<a href="#" class="tag ${type}">${tag}</a><br>`;
     }
@@ -91,12 +103,6 @@ function listTags(type) {
             elt.addEventListener('click', function() {addTag(type, this)});
         }
     })
-}
-
-// ADD TAG
-function addTag(type, target) {
-    const tag = new Tag(type, target.innerHTML).make();
-    tags.appendChild(tag);
 }
 
 
