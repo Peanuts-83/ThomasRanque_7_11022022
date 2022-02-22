@@ -1,6 +1,6 @@
 // LOOP ALGORYTHME //
 
-// GLOBAL VARIABLE
+// GLOBALS
 let recipes = [];
 let searchResult = [];
 let queryLength = 0;
@@ -55,16 +55,16 @@ function searchRecipes() {
         searchResult = [...results];
         queryLength = query.length;
         if (tags.children.length > 0) {
-            filterTag();
+            filterByTag();
         } else {
             displayRecipes(searchResult);
         }
-        // console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length, '- TAGS LENGTH:', tags.children.length);
+        console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length, '- TAGS LENGTH:', tags.children.length);
     } else {
         searchResult = [...recipes];
         queryLength = 0;
         if (tags.children.length > 0) {
-            filterTag();
+            filterByTag();
         } else {
             displayRecipes(searchResult);
         }
@@ -86,18 +86,19 @@ function displayRecipes(data) {
 // SUB-SEARCH //
 
 // FILTER RECIPES WITH TAG
-function filterTag() {
+function filterByTag() {
     let baseSearch = searchResult;
     const tagsArray = [...tags.children];
 
     tagsArray.forEach(elt => {
         const type = elt.title;
         const value = elt.id;
+
+        // FILTER RECIPES
         baseSearch = baseSearch.filter(recipe => {
             switch(type) {
                 case 'ingredients':
                     return recipe[type].some(ingr => ingr.ingredient.toLowerCase() == value);
-                    break;
                 case 'appliance':
                     return recipe.appliance.toLowerCase() == value;
                 case 'ustensils':
@@ -106,14 +107,17 @@ function filterTag() {
                     console.log(`Error filtering with TAG ${value}.`);
             }
         })
+
+        // ACTIVE TAGS TO HIDDEN LIST
+        hiddenTags.push(value);
     })
+
     displayRecipes(baseSearch);
 }
 
 // GET TAGS
 function getTags(type) {
     let tagList = new Set();
-    console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length)
 
     for (let recipe of searchResult) {
         if (recipe[type]) {

@@ -26,6 +26,10 @@ const active = subSearch.querySelectorAll('#active');
 const inactive = subSearch.querySelectorAll('#inactive');
 const results = document.querySelector('main .container-row');
 
+// GLOBALS
+const selector = { 'ingredients': ingredients, 'appliance': appareils, 'ustensils': ustensiles };
+let hiddenTags = [];
+
 
 ////////////
 // SEARCH //
@@ -36,9 +40,8 @@ search.addEventListener('submit', (e) => e.preventDefault());
 
 //////////
 // TAGS //
-observer = new MutationObserver(() => { filterTag() });
-observer.observe(tags, {characterData: false, childList: true, attributes: false});
-
+observer = new MutationObserver(() => { filterByTag() });
+observer.observe(tags, { characterData: false, childList: true, attributes: false });
 
 // ADD TAG
 function addTag(type, target) {
@@ -49,7 +52,9 @@ function addTag(type, target) {
 // CLOSE TAG
 function closeTag(e) {
     const tagBtns = [...tags.querySelectorAll('button')];
-    const [container] = tagBtns.filter(btn => btn.contains(e.target));
+    const [ container ] = tagBtns.filter(btn => btn.contains(e.target));
+    closeSubSearch();
+    hiddenTags = hiddenTags.filter(value => value != container.id);
     container.remove();
 }
 
@@ -62,9 +67,7 @@ inactive.forEach(btn => btn.addEventListener('click', swapSubSearch));
 active.forEach(btn => btn.querySelector('button').addEventListener('click', swapSubSearch));
 
 function swapSubSearch(e) {
-    // ALL BTNS INACTIVE
-    [...active].forEach(elt => elt.style.display = 'none');
-    [...inactive].forEach(elt => elt.style.display = 'flex');
+    closeSubSearch();
 
     // ONE BTN ACTIVE
     const [container] = [...active].filter(elt => elt.contains(e.target)).length > 0
@@ -84,9 +87,14 @@ function swapSubSearch(e) {
     }
 }
 
+// ALL SUB SEARCH BTNS INACTIVE
+function closeSubSearch() {
+    [...active].forEach(elt => elt.style.display = 'none');
+    [...inactive].forEach(elt => elt.style.display = 'flex');
+}
+
 // TAG LIST BUILD
 function listTags(type) {
-    const selector = { 'ingredients': ingredients, 'appliance': appareils, 'ustensils': ustensiles };
     const [tagContainer] = [...selector[type]].filter(elt => elt.classList.contains(type) && elt.id == 'active');
     const tagResult = tagContainer.querySelector('.tag-result');
 
@@ -94,13 +102,15 @@ function listTags(type) {
     let tagList = getTags(type);
     tagResult.innerHTML = '';
     for (let tag of tagList) {
-        tagResult.innerHTML += `<a href="#" class="tag ${type}">${tag}</a><br>`;
+        if (!hiddenTags.includes(tag)) {
+            tagResult.innerHTML += `<a href="#" class="tag ${type}">${tag}</a><br>`;
+        }
     }
 
     // ADD EVENTLISTENER ON EACH TAG
     tagResult.childNodes.forEach(elt => {
         if (elt.classList.contains('tag')) {
-            elt.addEventListener('click', function() {addTag(type, this)});
+            elt.addEventListener('click', function () { addTag(type, this) });
         }
     })
 }
