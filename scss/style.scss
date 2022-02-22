@@ -1,6 +1,7 @@
 @import "./variables_overrides.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+// MOBIL FIRST
 body {
     margin: 3rem;
 }
@@ -10,8 +11,10 @@ button:focus, input:focus {
 }
 
 
+
 // HEADER
 header {
+    z-index: 10;
     #logo {
         width: 200px;
     }
@@ -80,9 +83,15 @@ header {
             button {
                 margin-inline-end: 0;
             }
-            .result {
-                font-size: smaller;
-                line-height: 1;
+            .tag-result {
+                font-size: 14px;
+                line-height: 2;
+                column-count: 2;
+                column-gap: 20px;
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
             }
         }
     }
@@ -90,6 +99,11 @@ header {
 
 // MAIN RESULTS //
 main {
+    position: absolute;
+    z-index: 0;
+    top: 550px;
+    left: 0;
+
     .container-row {
         display: grid;
         grid-template-columns: 1fr;
@@ -133,7 +147,7 @@ main {
 
 
 
-
+// TABLETT
 @media (min-width: 768px) {
     // HEADER
     header {
@@ -168,6 +182,7 @@ main {
         // SUB SEARCH //
         .subSearch {
             flex-direction: row;
+            align-items: flex-start;
 
             .input-group {
                 .form-control {
@@ -181,6 +196,7 @@ main {
 
             #active {
                 width: auto;
+                max-width: 40%;
                 margin-inline: 10px;
                 input {
                     margin-inline-start: -20px;
@@ -188,10 +204,9 @@ main {
                 button {
                     margin-inline-end: -20px;
                 }
-                .result {
-                    font-size: larger;
-                    line-height: 2;
-                    // margin-bottom: 10px;
+                .tag-result {
+                    font-size: 16px;
+                    column-count: 1;
                 }
             }
         }
@@ -199,6 +214,9 @@ main {
 
     // MAIN //
     main {
+        top: 450px;
+        left: 0;
+
         .container-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -208,7 +226,27 @@ main {
 }
 
 
+// DESKTOP
 @media (min-width: 992px) {
+    // HEADER //
+    header {
+
+        // SUBSEARCH //
+        .subSearch {
+
+            #active{
+                max-width: 50%;
+
+                .tag-result {
+                    font-size: 18px;
+                    line-height: 2;
+                    column-count: 3;
+                    column-gap: 20px;
+                }
+            }
+        }
+    }
+
     // MAIN //
     main {
         .container-row {

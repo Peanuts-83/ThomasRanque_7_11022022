@@ -16,13 +16,17 @@ function getRecipes() {
 // INIT
 async function initRecipes() {
     recipes = await getRecipes();
+    this.value= '';
+    searchRecipes();
+    console.log('THIS INIT',this.value)
 }
 
-// SEARCH
+/////////////////
+// MAIN SEARCH //
 function searchRecipes() {
     const query = this.value;
     if (query.length > 2) {
-        let [ searchArray, results ] = [[], []];
+        let [searchArray, results] = [[], []];
         // CHECK FOR ERASE STRING / Keep old search OR reload all recipes
         if (queryLength > query.length) {
             searchArray = [...recipes];
@@ -55,7 +59,7 @@ function searchRecipes() {
     } else {
         searchResult = [...recipes];
         queryLength = 0;
-        results.innerHTML = '';
+        displayRecipes([...recipes])
     }
 }
 
@@ -64,7 +68,34 @@ function displayRecipes(data) {
     results.innerHTML = '';
     for (let recipe of data) {
         let card = new Card(recipe).make();
-        console.log(card);
         results.appendChild(card);
     }
+}
+
+
+
+////////////////
+// SUB-SEARCH //
+
+// GET TAGS
+function getTags(type) {
+    let tagList = new Set();
+    for (let recipe of recipes) {
+        if (recipe[type]) {
+            switch(type) {
+                case 'ingredients':
+                    recipe[type].forEach(ingr => tagList.add(ingr.ingredient));
+                    break;
+                case 'appliance':
+                    tagList.add(recipe[type]);
+                    break;
+                case 'ustensils':
+                    recipe[type].forEach(ust => tagList.add(ust));
+                    break;
+                default:
+                    console.log('Error parsing Tag list.');
+            }
+        }
+    }
+    return tagList;
 }

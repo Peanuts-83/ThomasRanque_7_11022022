@@ -12,9 +12,9 @@ class Tag {
         switch (this.type) {
             case 'ingredients':
                 return 'primary';
-            case 'appareils':
+            case 'appliance':
                 return 'success';
-            case 'ustensiles':
+            case 'ustensils':
                 return 'danger';
             default:
                 console.log('ERROR with TAG type constructor! Define new search type or check type...');
@@ -24,6 +24,7 @@ class Tag {
         const tag = document.createElement('button');
         tag.classList = `btn w-auto rounded d-flex align-items-center text-white bg-${this.color}`;
         tag.id = `id#${this.idNum}`;
+        tag.title = this.txt;
         tag.innerHTML = `${this.txt} <span><i class="far fa-times-circle ms-2"></i></span>`;
         tag.addEventListener('click', closeTag);
         return tag;
@@ -33,6 +34,8 @@ class Tag {
 
 ///////////////////////////
 //BTN SUB SEARCH Factory //
+const typeValues = {ingredients: 'ingredients', appliance: 'appareils', ustensils: 'ustensiles'};
+
 class BtnSubSearch {
     constructor(type) {
         this.type = type;
@@ -42,9 +45,9 @@ class BtnSubSearch {
         switch (this.type) {
             case 'ingredients':
                 return 'primary';
-            case 'appareils':
+            case 'appliance':
                 return 'success';
-            case 'ustensiles':
+            case 'ustensils':
                 return 'danger';
             default:
                 console.log('ERROR with BTN type constructor! Define new search type or check type...');
@@ -58,7 +61,7 @@ class BtnSubSearch {
         container.classList = `col-1 px-0 input-group ${this.type}`;
         container.id = 'inactive';
         btn1.classList = `form-control form-control-lg py-4 rounded-left border-0 text-white bg-${this.color}`;
-        btn1.innerText = this.type[0].toUpperCase() + this.type.substr(1);
+        btn1.innerText = typeValues[this.type][0].toUpperCase() + typeValues[this.type].substr(1);
         btn2.classList = `input-group-text px-3 rounded-right border-0 text-white bg-${this.color}`;
         btn2.innerHTML = '<i class="fas fa-chevron-down"></i>';
 
@@ -73,18 +76,18 @@ class BtnSubSearch {
         const btn = document.createElement('button');
         const divR = document.createElement('div');
 
-        container.className = `row rounded bg-${this.color} ${this.type}`;
+        container.className = `row rounded mx-0 bg-${this.color} ${this.type}`;
         container.id = 'active';
         divQ.classList = `col input-group`;
         input.classList = `form-control form-control-lg py-4 rounded-left border-0 text-white bg-${this.color}`;
         input.type = 'text';
         input.name = this.type;
-        input.placeholder = `Rechercher un ${this.type.substr(0, this.type.length - 1)}`;
+        input.placeholder = `Rechercher un ${typeValues[this.type].substr(0, typeValues[this.type].length - 1)}`;
         btn.classList = `input-group-text px-3 rounded-right border-0 text-white bg-${this.color}`;
         btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
         divQ.appendChild(input);
         divQ.appendChild(btn);
-        divR.classList = `row rounded-bottom border-0 text-white bg-${this.color} result`;
+        divR.classList = `rounded-bottom border-0 text-white bg-${this.color} tag-result`;
 
         container.appendChild(divQ);
         container.appendChild(divR);
@@ -124,7 +127,6 @@ class Card {
 
         card.classList = 'card p-0';
         img.classList = 'card-img-top';
-        console.log(this.setPhoto())
         img.style.background = `#fff url("${this.setPhoto()}") no-repeat`;
         img.style['background-size'] = 'cover';
         cardBody.classList = 'card-body';
@@ -151,7 +153,20 @@ class Card {
     getIngredients() {
         let res = '';
         for (let elt of this.ingredients) {
-            res += `<p><strong>${elt.ingredient}:</strong> ${elt.quantity} ${elt.unit ? elt.unit : ''}</p>`;
+            if (!elt.quantity && !elt.unit) {
+                res += `<p><strong>${elt.ingredient}</strong></p>`
+            } else {
+                res += `<p><strong>${elt.ingredient}:</strong> ${elt.quantity} ${
+                    elt.unit
+                    ? elt.quantity == 1
+                        ? elt.unit != 'cuillères à soupe' && elt.unit != 'cuillères à café'
+                            ? elt.unit.substr(0, elt.unit.length - 1)
+                                : elt.unit == 'cuillères à soupe'
+                                    ? 'cuillère à soupe'
+                                    : 'cuillère à café'
+                        : elt.unit
+                    : ''}</p>`;
+            }
         }
         return res;
     }
