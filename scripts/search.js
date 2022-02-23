@@ -37,6 +37,7 @@ function searchRecipes() {
             searchArray = searchResult.length > 0 ? [...searchResult] : [...recipes];
         }
 
+        // SEARCH ALGO - LOOP BASED //
         for (let recipe of searchArray) {
             let _added = false;
             if (recipe.name.toLowerCase().includes(query)) {
@@ -54,6 +55,7 @@ function searchRecipes() {
                 }
             }
         }
+        
         searchResult = [...results];
         queryLength = query.length;
 
