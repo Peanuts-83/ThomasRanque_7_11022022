@@ -1,12 +1,10 @@
 //////////////////
 // TAGS Factory //
 class Tag {
-    static #idNum = 0;
     constructor(type, txt) {
         this.type = type;
         this.txt = txt;
         this.color = this.defColor();
-        this.idNum = Tag.#idNum++;
     }
     defColor() {
         switch (this.type) {
@@ -91,6 +89,7 @@ class BtnSubSearch {
 
         container.appendChild(divQ);
         container.appendChild(divR);
+        
         return container;
     }
     make() {
@@ -109,12 +108,14 @@ const fakePhotos = [
 ];
 
 class Card {
+    static #photoId = 0;
     constructor(recipe) {
         this.recipe = recipe;
         this.name = recipe.name;
         this.time = recipe.time;
         this.ingredients = recipe.ingredients;
         this.description = recipe.description;
+        this.photoId = Card.#photoId++;
     }
     make() {
         const card = document.createElement('div');
@@ -148,7 +149,7 @@ class Card {
         return card;
     }
     setPhoto() {
-        return fakePhotos[Math.floor(Math.random() * fakePhotos.length)];
+        return fakePhotos[Math.floor(this.photoId % fakePhotos.length)];
     }
     getIngredients() {
         let res = '';

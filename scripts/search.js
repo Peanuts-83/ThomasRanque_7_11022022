@@ -4,6 +4,7 @@
 let recipes = [];
 let searchResult = [];
 let queryLength = 0;
+let tagLength = 0;
 
 // GET JSON DATA
 function getRecipes() {
@@ -17,7 +18,7 @@ function getRecipes() {
 async function initRecipes() {
     recipes = await getRecipes();
     mainInput.value = '';
-    this.value= '';
+    this.value = '';
     searchRecipes();
 }
 
@@ -25,8 +26,10 @@ async function initRecipes() {
 // MAIN SEARCH //
 function searchRecipes() {
     const query = this.value;
+    // BEGIN FILTER RECIPES
     if (query.length > 2) {
         let [searchArray, results] = [[], []];
+
         // CHECK FOR ERASE STRING / Keep old search OR reload all recipes
         if (queryLength > query.length) {
             searchArray = [...recipes];
@@ -51,16 +54,18 @@ function searchRecipes() {
                 }
             }
         }
-
         searchResult = [...results];
         queryLength = query.length;
+
         if (tags.children.length > 0) {
             filterByTag();
         } else {
             displayRecipes(searchResult);
         }
-        console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length, '- TAGS LENGTH:', tags.children.length);
+        // console.log('RECIPES QTY:', recipes.length, '- SEARCH RES QTY:', searchResult.length, '- TAGS LENGTH:', tags.children.length);
+
     } else {
+        // DISPLAY ALL RECIPES
         searchResult = [...recipes];
         queryLength = 0;
         if (tags.children.length > 0) {
@@ -85,10 +90,29 @@ function displayRecipes(data) {
 ////////////////
 // SUB-SEARCH //
 
+// SEARCH TAGS
+function searchTags(e) {
+    if (e.target.style.display != 'none') {
+        const query = e.target.value;   // tag name
+        const container = e.target.parentElement.parentElement;
+        let type = [...container.classList];
+        type = type[type.length - 1];   // ingredients || appliance || ustensils
+        let list = [...container.dataset.list.split(',')];    // tagList from data-list
+
+        let newList = query.length == 0 ? [...list] : [...list.filter(elt => elt.includes(query))];
+        tagLength = query.length;
+        // console.log('QUERY', query, 'LIST', list, 'TAGLENGTH', tagLength)
+
+        // NODELIST TO ARRAY -> FILTER WITH TAG
+        listTags(type, newList);
+
+    }
+}
+
 // FILTER RECIPES WITH TAG
-function filterByTag() {
-    let baseSearch = searchResult;
+function filterByTag(baseSearch = searchResult) {
     const tagsArray = [...tags.children];
+    // console.log('TAGSARRAY', tagsArray)
 
     tagsArray.forEach(elt => {
         const type = elt.title;
@@ -96,7 +120,7 @@ function filterByTag() {
 
         // FILTER RECIPES
         baseSearch = baseSearch.filter(recipe => {
-            switch(type) {
+            switch (type) {
                 case 'ingredients':
                     return recipe[type].some(ingr => ingr.ingredient.toLowerCase() == value);
                 case 'appliance':
@@ -110,34 +134,41 @@ function filterByTag() {
 
         // ACTIVE TAGS TO HIDDEN LIST
         hiddenTags.push(value);
+        listTags(type);
     })
-
     displayRecipes(baseSearch);
 }
 
 // GET TAGS
-function getTags(type) {
-    let tagList = new Set();
+function getTags(type, list = []) {
+    let tagList;
+    if (list.length > 0) {
+        tagList = [...list];
+    } else {
+        tagList = new Set();
+        let recipeList = searchResult.length > 0 ? searchResult : recipes;
 
-    for (let recipe of searchResult) {
-        if (recipe[type]) {
-            switch(type) {
-                case 'ingredients':
-                    recipe[type].forEach(ingr => tagList.add(ingr.ingredient.toLowerCase()));
-                    break;
-                case 'appliance':
-                    tagList.add(recipe[type].toLowerCase());
-                    break;
-                case 'ustensils':
-                    recipe[type].forEach(ust => tagList.add(ust.toLowerCase()));
-                    break;
-                default:
-                    console.log('Error parsing Tag list.');
+        for (let recipe of recipeList) {
+            if (recipe[type]) {
+                switch (type) {
+                    case 'ingredients':
+                        recipe[type].forEach(ingr => tagList.add(ingr.ingredient.toLowerCase()));
+                        break;
+                    case 'appliance':
+                        tagList.add(recipe[type].toLowerCase());
+                        break;
+                    case 'ustensils':
+                        recipe[type].forEach(ust => tagList.add(ust.toLowerCase()));
+                        break;
+                    default:
+                        console.log('Error parsing Tag list.');
+                }
             }
         }
+        console.log('getTags() - RECIPELIST', recipeList, ' - TAGLIST', tagList)
     }
 
-    return [...tagList].sort((a,b) => {
+    return [...tagList].sort((a, b) => {
         // WORDS WITHOUT ACCENTS
         const A = a.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const B = b.normalize("NFD").replace(/[\u0300-\u036f]/g, "");

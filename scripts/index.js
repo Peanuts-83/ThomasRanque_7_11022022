@@ -31,11 +31,12 @@ const selector = { 'ingredients': ingredients, 'appliance': appareils, 'ustensil
 let hiddenTags = [];
 
 
-////////////
-// SEARCH //
+////////////////////////
+// INIT & MAIN SEARCH //
 window.addEventListener('load', initRecipes);       // to search.js function //TODO: Ask if prealoder ok?
 mainInput.addEventListener('input', searchRecipes);    // to search.js function
 search.addEventListener('submit', (e) => e.preventDefault());
+
 
 
 //////////
@@ -49,14 +50,39 @@ function addTag(type, target) {
     tags.appendChild(tag);
 }
 
+// TAG LIST BUILD
+function listTags(type, list = []) {
+    const [tagContainer] = [...selector[type]].filter(elt => elt.classList.contains(type) && elt.id == 'active');
+    const tagResult = tagContainer.querySelector('.tag-result');
+
+    // DISPLAY TAGS IN SUB SEARCH BTN
+    let tagList = getTags(type);
+    let iterateList = list.length > 0 ? list : tagList;
+    tagContainer.dataset.list = tagList;
+    tagResult.innerHTML = '';
+    for (let tag of iterateList) {
+        if (!hiddenTags.includes(tag)) {
+            tagResult.innerHTML += `<a href="#" class="tag ${type}">${tag}</a><br>`;
+        }
+    }
+
+    // ADD EVENTLISTENER ON EACH TAG
+    tagResult.childNodes.forEach(elt => {
+        if (elt.classList.contains('tag')) {
+            elt.addEventListener('click', function () { addTag(type, this) });
+        }
+    })
+}
+
 // CLOSE TAG
 function closeTag(e) {
     const tagBtns = [...tags.querySelectorAll('button')];
-    const [ container ] = tagBtns.filter(btn => btn.contains(e.target));
+    const [container] = tagBtns.filter(btn => btn.contains(e.target));
     closeSubSearch();
     hiddenTags = hiddenTags.filter(value => value != container.id);
     container.remove();
 }
+
 
 
 ///////////////
@@ -65,10 +91,13 @@ function closeTag(e) {
 // BTN SWAP
 inactive.forEach(btn => btn.addEventListener('click', swapSubSearch));
 active.forEach(btn => btn.querySelector('button').addEventListener('click', swapSubSearch));
+// SEARCH IN TAG LIST
+active.forEach(btn => btn.querySelector('input').addEventListener('input', searchTags));
+
 
 function swapSubSearch(e) {
+    // CLOSE ALL BTNS
     closeSubSearch();
-
     // ONE BTN ACTIVE
     const [container] = [...active].filter(elt => elt.contains(e.target)).length > 0
         ? [...active].filter(elt => elt.contains(e.target))
@@ -87,33 +116,24 @@ function swapSubSearch(e) {
     }
 }
 
-// ALL SUB SEARCH BTNS INACTIVE
+// CLOSE SUB SEARCH BTNS
 function closeSubSearch() {
+    [...active].forEach(elt => elt.querySelector('input').value = '');
     [...active].forEach(elt => elt.style.display = 'none');
     [...inactive].forEach(elt => elt.style.display = 'flex');
 }
 
-// TAG LIST BUILD
-function listTags(type) {
-    const [tagContainer] = [...selector[type]].filter(elt => elt.classList.contains(type) && elt.id == 'active');
-    const tagResult = tagContainer.querySelector('.tag-result');
-
-    // DISPLAY TAGS IN SUB SEARCH BTN
-    let tagList = getTags(type);
-    tagResult.innerHTML = '';
-    for (let tag of tagList) {
-        if (!hiddenTags.includes(tag)) {
-            tagResult.innerHTML += `<a href="#" class="tag ${type}">${tag}</a><br>`;
+// CLOSE SUB SEARCH ACTIVE BTN IF CLICK OUTSIDE BTN
+document.addEventListener('mouseup', mouseUpOutsideBtn);
+function mouseUpOutsideBtn(e) {
+    const [activeBtn] = [...active].filter(btn => btn.style.display != 'none');
+    if (activeBtn) {
+        if (!activeBtn.contains(e.target)) {
+            closeSubSearch();
         }
     }
-
-    // ADD EVENTLISTENER ON EACH TAG
-    tagResult.childNodes.forEach(elt => {
-        if (elt.classList.contains('tag')) {
-            elt.addEventListener('click', function () { addTag(type, this) });
-        }
-    })
 }
+
 
 
 /////////////////
