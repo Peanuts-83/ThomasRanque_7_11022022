@@ -55,7 +55,7 @@ function searchRecipes() {
                 }
             }
         }
-        
+
         searchResult = [...results];
         queryLength = query.length;
 
@@ -94,14 +94,14 @@ function displayRecipes(data) {
 // SEARCH TAGS
 function searchTags(e) {
     if (e.target.style.display != 'none') {
-        const query = e.target.value;   // tag name
+        const query = e.target.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");   // tag name - no accent
         const container = e.target.parentElement.parentElement;
         let type = [...container.classList];
         type = type[type.length - 1];   // ingredients || appliance || ustensils
         let list = [...container.dataset.list.split(',')];    // tagList from data-list
 
-        // EXCLUDE TAGS !MATCHING QUERY
-        let newList = query.length == 0 ? [...list] : [...list.filter(elt => elt.includes(query))];
+        // EXCLUDE TAGS !MATCHING QUERY - NO ACCENTS FOR BOTH
+        let newList = query.length == 0 ? [...list] : [...list.filter(elt => elt.normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query))];
         // EXCLUDE TAGS ALREADY CHECKED
         const checkedTags = tags.children.length == 0 ? null : tags.children;
         if (checkedTags) {
