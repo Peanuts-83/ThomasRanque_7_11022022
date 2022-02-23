@@ -9,8 +9,6 @@ const arrayRes = document.querySelector('#res_array');
 // GLOBALS
 let recipes = [];
 
-// TODO: supprimer les accents et caracteres ,;!?&~#etc... avant la recherche!
-
 // GET JSON DATA
 function getRecipes() {
     const recipes = fetch('./recipes.json')
@@ -57,17 +55,17 @@ function loopAlgo(query) {
     let results = [];
     for (let recipe of recipes) {
         let _added = false;
-        if (recipe.name.toLowerCase().includes(query)) {
+        if (recipe.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query)) {
             results.push(recipe);
             // console.log('NAME', recipe.name);
             _added = true;
-        }  else if (recipe.description.toLowerCase().includes(query) && !_added) {
+        }  else if (recipe.description.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query) && !_added) {
             results.push(recipe);
             // console.log('DESCR', recipe.description);
             _added = true;
         } else if (!_added) {
             for (let ingr of recipe.ingredients) {
-                if (ingr.ingredient.toLowerCase().includes(query) && !_added) {
+                if (ingr.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query) && !_added) {
                     results.push(recipe);
                     // console.log('INGR', ingr.ingredient);
                     _added = true;
@@ -101,9 +99,9 @@ function arrayAlgo(query) {
     const showResults = document.querySelector('.array .results');
     showResults.innerText = '';
     let results = recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(query) ||
-        recipe.description.toLowerCase().includes(query) ||
-        recipe.ingredients.filter(ingr => ingr.ingredient.toLowerCase().includes(query)).length >= 1;
+        return recipe.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query) ||
+        recipe.description.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query) ||
+        recipe.ingredients.filter(ingr => ingr.ingredient.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query)).length >= 1;
     });
     results.forEach(recipe => showResults.innerText += recipe.name + '\n');
 

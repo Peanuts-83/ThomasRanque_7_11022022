@@ -33,7 +33,7 @@ let hiddenTags = [];
 
 ////////////////////////
 // INIT & MAIN SEARCH //
-window.addEventListener('load', initRecipes);       // to search.js function //TODO: Ask if prealoder ok?
+window.addEventListener('load', initRecipes);       // to search.js function 
 mainInput.addEventListener('input', searchRecipes);    // to search.js function
 search.addEventListener('submit', (e) => e.preventDefault());
 
