@@ -51,13 +51,13 @@ function addTag(type, target) {
 }
 
 // TAG LIST BUILD
-function listTags(type, list = []) {
+function listTags(type, list = null) {
     const [tagContainer] = [...selector[type]].filter(elt => elt.classList.contains(type) && elt.id == 'active');
     const tagResult = tagContainer.querySelector('.tag-result');
 
     // DISPLAY TAGS IN SUB SEARCH BTN
     let tagList = getTags(type);
-    let iterateList = list.length > 0 ? list : tagList;
+    let iterateList = list ? list : tagList;
     tagContainer.dataset.list = tagList;
     tagResult.innerHTML = '';
     for (let tag of iterateList) {
