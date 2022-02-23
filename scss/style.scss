@@ -104,10 +104,12 @@ main {
     top: 550px;
     left: 0;
 
+
     .container-row {
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
+        margin-bottom: 3rem;
 
         .card {
             background-color: $gray-300;

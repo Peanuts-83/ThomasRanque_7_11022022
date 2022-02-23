@@ -11207,6 +11207,7 @@ main .container-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
+  margin-bottom: 3rem;
 }
 main .container-row .card {
   background-color: #dee2e6;

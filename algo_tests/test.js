@@ -104,7 +104,7 @@ function arrayAlgo(query) {
         return recipe.name.toLowerCase().includes(query) ||
         recipe.description.toLowerCase().includes(query) ||
         recipe.ingredients.filter(ingr => ingr.ingredient.toLowerCase().includes(query)).length >= 1;
-    })
+    });
     results.forEach(recipe => showResults.innerText += recipe.name + '\n');
 
     const end = performance.now();
